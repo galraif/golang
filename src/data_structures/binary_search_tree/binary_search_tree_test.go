@@ -28,23 +28,23 @@ func TestTree_Insert(t *testing.T) {
 }
 
 func TestTree_Lookup(t *testing.T) {
-	rightNode := &TreeNode{
+	rightNode := &Node{
 		value: 20,
 		left:  nil,
 		right: nil,
 	}
-	leftNode := &TreeNode{
+	leftNode := &Node{
 		value: 4,
 		left:  nil,
 		right: nil,
 	}
-	rootNode := &TreeNode{
+	rootNode := &Node{
 		value: 9,
 		left:  leftNode,
 		right: rightNode,
 	}
 	tree := Tree{}
-	assert.Equal(t, &TreeNode{}, tree.Lookup(12))
+	assert.Equal(t, &Node{}, tree.Lookup(12))
 	tree.Root = rootNode
 	//Expected tree
 	//     9
@@ -52,21 +52,21 @@ func TestTree_Lookup(t *testing.T) {
 	assert.Equal(t, rootNode, tree.Lookup(9))
 	assert.Equal(t, leftNode, tree.Lookup(4))
 	assert.Equal(t, rightNode, tree.Lookup(20))
-	assert.Equal(t, &TreeNode{}, tree.Lookup(13))
+	assert.Equal(t, &Node{}, tree.Lookup(13))
 }
 
 func TestTree_IsExist(t *testing.T) {
-	rightNode := &TreeNode{
+	rightNode := &Node{
 		value: 20,
 		left:  nil,
 		right: nil,
 	}
-	leftNode := &TreeNode{
+	leftNode := &Node{
 		value: 4,
 		left:  nil,
 		right: nil,
 	}
-	rootNode := &TreeNode{
+	rootNode := &Node{
 		value: 9,
 		left:  leftNode,
 		right: rightNode,
@@ -109,17 +109,17 @@ func TestTree_IsLeaf(t *testing.T) {
 }
 
 func TestTree_IsTreeNodeLeaf(t *testing.T) {
-	rightNode := &TreeNode{
+	rightNode := &Node{
 		value: 20,
 		left:  nil,
 		right: nil,
 	}
-	leftNode := &TreeNode{
+	leftNode := &Node{
 		value: 4,
 		left:  nil,
 		right: nil,
 	}
-	rootNode := &TreeNode{
+	rootNode := &Node{
 		value: 9,
 		left:  leftNode,
 		right: rightNode,
@@ -166,7 +166,7 @@ func TestTree_MaxValueInTree(t *testing.T) {
 }
 
 func TestTree_RemoveNodeWithoutChildren(t *testing.T) {
-	var emptyNode *TreeNode
+	var emptyNode *Node
 	tree := Tree{}
 	rootValue := 9
 	leftValue := 4

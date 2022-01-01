@@ -2,17 +2,17 @@ package binary_search_tree
 
 import "fmt"
 
-type TreeNode struct {
-	left  *TreeNode
-	right *TreeNode
+type Node struct {
+	left  *Node
+	right *Node
 	value int
 }
 
 type Tree struct {
-	Root *TreeNode
+	Root *Node
 }
 
-func (T *Tree) PrintInOrderTree(node *TreeNode) {
+func (T *Tree) PrintInOrderTree(node *Node) {
 	if node != nil {
 		T.PrintInOrderTree(node.left)
 		fmt.Println(node.value)
@@ -21,7 +21,7 @@ func (T *Tree) PrintInOrderTree(node *TreeNode) {
 }
 
 func (T *Tree) Insert(value int) {
-	newNode := &TreeNode{
+	newNode := &Node{
 		left:  nil,
 		right: nil,
 		value: value,
@@ -50,9 +50,9 @@ func (T *Tree) Insert(value int) {
 	}
 }
 
-func (T *Tree) Lookup(value int) *TreeNode {
+func (T *Tree) Lookup(value int) *Node {
 	if T.Root == nil {
-		return &TreeNode{}
+		return &Node{}
 	}
 	currentNode := T.Root
 	for currentNode != nil {
@@ -64,7 +64,7 @@ func (T *Tree) Lookup(value int) *TreeNode {
 			return currentNode
 		}
 	}
-	return &TreeNode{}
+	return &Node{}
 }
 
 func (T *Tree) IsExist(value int) bool {
@@ -77,7 +77,7 @@ func (T *Tree) IsValueLeaf(value int) bool {
 	return node.left == nil && node.right == nil
 }
 
-func (T *Tree) IsTreeNodeLeaf(node *TreeNode) bool {
+func (T *Tree) IsTreeNodeLeaf(node *Node) bool {
 	return node.left == nil && node.right == nil
 }
 
@@ -117,7 +117,7 @@ func (T *Tree) MaxValueInTree() int {
 	return currentValue
 }
 
-func (T *Tree) MinValueNode(node *TreeNode) *TreeNode {
+func (T *Tree) MinValueNode(node *Node) *Node {
 	currentNode := node
 	for currentNode.left != nil {
 		currentNode = currentNode.left
@@ -125,7 +125,7 @@ func (T *Tree) MinValueNode(node *TreeNode) *TreeNode {
 	return currentNode
 }
 
-func (T *Tree) MaxValueNode(node *TreeNode) *TreeNode {
+func (T *Tree) MaxValueNode(node *Node) *Node {
 	currentNode := node
 	for currentNode.right != nil {
 		currentNode = currentNode.right
@@ -137,7 +137,7 @@ func (T *Tree) Remove(value int) {
 	if T.Root == nil {
 		return
 	}
-	parentNode := &TreeNode{}
+	parentNode := &Node{}
 	currentNode := T.Root
 	for currentNode != nil {
 		if value < currentNode.value {
